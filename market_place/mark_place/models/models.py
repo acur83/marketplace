@@ -41,9 +41,7 @@ class PurchaseOrder(models.Model):
     '''
     _inherit = 'purchase.order'
 
-    requisition_code_p = fields.Char()
-    related_partner_id_p = fields.Many2one('res.partner')
-
+    note = fields.Char()
     computed_partner_id = fields.Many2one('res.partner', readonly=True,
                                           compute='_compute_partner',
                                           store=True)
