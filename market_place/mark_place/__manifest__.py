@@ -12,10 +12,10 @@
     'data': [
         'views/services_catalog.xml',
         'views/purchase_requisition_inherit_view.xml',
-        # 'views/purchase_order_inh.xml',
-        # 'views/res_users_inh_form_view.xml',
+        'views/purchase_order_inh.xml',
+        'views/res_users_inh_form_view.xml',
         'security/ir.model.access.csv',
-        # 'security/security.xml'
+        'security/security.xml'
     ],
     'demo': [
     ],

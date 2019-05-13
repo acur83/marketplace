@@ -8,9 +8,7 @@
       <xpath expr="//form/sheet/notebook/page[@name='access_rights']"
       	     position="inside">
 	<group string="Related Partner">
-	  <label for="related_partner_id" class="oe_edit_only"
-		 string="Related Partner"/>
-      	  <field name="related_partner_id" />
+      	  <field name="related_partner_id" string="Related Partner" />
 	</group>
       </xpath>
     </field>
