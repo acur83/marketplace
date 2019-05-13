@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+  <record id="view_purchase_requisition_inherit" model="ir.ui.view">
+    <field name="name">purchase.requisition_inherit.form.view</field>
+    <field name="model">purchase.requisition</field>
+    <field name="inherit_id"
+	   ref="purchase_requisition.view_purchase_requisition_form"/>
+    <field name="arch" type="xml">
+      <xpath expr="//sheet/notebook" position="inside">
+	<page string="Services Catalogs" groups="base.group_system">
+	  <group>
+	    <field name="services_catalogs_ids" widget="many2many_tags"/>
+	  </group>
+	</page>
+      </xpath>
+      <xpath expr="//sheet/group/group/field[@name='ordering_date']"
+      	     position="attributes">
+        <attribute name="attrs">{'invisible': True}</attribute>
+      </xpath>
+      <xpath expr="//sheet/group/group/field[@name='schedule_date']"
+      	     position="attributes">
+        <attribute name="attrs">{'invisible': True}</attribute>
+      </xpath>
+      <xpath expr="//sheet/group/group/field[@name='vendor_id']"
+      	     position="attributes">
+        <attribute name="attrs">{'invisible': True}</attribute>
+      </xpath>
+      <xpath expr="//sheet/group/group/field[@name='origin']"
+      	     position="replace">
+      	<field name="requisition_code" string="Custom Code"/>
+      </xpath>
+    </field>
+  </record>
+</odoo>
+

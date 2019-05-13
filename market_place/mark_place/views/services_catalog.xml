@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_service_catalog_tree" model="ir.ui.view">
+      <field name="name">services.catalog.tree</field>
+      <field name="model">market.services.catalog</field>
+      <field name="arch" type="xml">
+	<tree string="Market Place Service Catalog">
+	  <field name="custom_name" string="Custom Name"/>
+	  <field name="users_ids" string="Users"/>
+	</tree>
+      </field>
+    </record>
+    
+    <record id="market_place_form_view" model="ir.ui.view">
+      <field name="name">market.place.form.view</field>
+      <field name="model">market.services.catalog</field>
+      <field name="arch" type="xml">
+    	<form>
+    	  <sheet>
+    	    <separator string="Market Place Services"/>
+    	    <group col="2" colspan="2">
+	      <field name="custom_name" string="Custom Name"/>
+    	    </group>
+	    <group col="2" colspan="2">
+	      <field name="users_ids" string="Users" widget="many2many_tags"/>
+    	    </group>
+    	  </sheet>
+    	</form>
+      </field>
+    </record>
+
+    <record id="services_catalog_action_id" model="ir.actions.act_window">
+      <field name="name">Services Catalog</field>
+      <field name="type">ir.actions.act_window</field>
+      <field name="res_model">market.services.catalog</field>
+      <field name="view_type">form</field>
+      <field name="domain">[]</field>
+      <field name="view_mode">tree,form</field>
+      <field name="context">{}</field>
+      <field name="filter" eval="True"/>
+      <field name="help" type="html">
+        <p class="o_view_nocontent_smiling_face">
+          Create a new vendor in your address book
+          </p><p>
+          Odoo helps you easily track all activities related to a vendor.
+        </p>
+            </field>
+    </record>
+    
+    <menuitem id="menu_market_place_submen"
+	      name="Services Catalog"
+	      groups="base.group_system"
+              parent="purchase.menu_procurement_management"
+              action="services_catalog_action_id"
+	      sequence="99"/>    
+</odoo>
