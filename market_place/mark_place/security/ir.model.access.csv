@@ -1,2 +1,3 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_market_place_user,market.place.user,model_market_services_catalog,base.group_user,1,1,1,1
+access_market_place_manager,market.place.manager,model_market_services_catalog,base.group_system,1,1,1,1
+access_market_place_user,market.place.user,model_market_services_catalog,base.group_user,1,0,0,0
