@@ -13,7 +13,6 @@ class MarketServicesCatalog(models.Model):
     custom_name = fields.Char(required=True)
     users_ids = fields.One2many('res.users', 'services_catalog_id',
                                 required=True)
-    purchase_requisition_id = fields.Many2one('purchase.requisition')
 
 
 class ResUsers(models.Model):
@@ -30,9 +29,8 @@ class PurchaseRequisition(models.Model):
     '''
     _inherit = 'purchase.requisition'
 
-    services_catalogs_ids = fields.One2many('market.services.catalog',
-                                            'purchase_requisition_id',
-                                            required=True)
+    services_catalogs_ids = fields.Many2many('market.services.catalog',
+                                             required=True)
     requisition_code = fields.Char()
 
 
