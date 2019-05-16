@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 
 from odoo import models, fields, api
+from openerp.osv.orm import except_orm
+from openerp.tools.translate import _
 
 
 class MarketServicesCatalog(models.Model):
@@ -63,3 +65,22 @@ class PurchaseOrder(models.Model):
         '''
         vals['computed_partner_id'] = self.env.user.related_partner_id.id
         return super(PurchaseOrder, self).create(vals)
+
+    def _ckeck_right_access(self):
+        '''check if the logged user belong to purchase manager group
+        purchase.
+        '''
+        purchase_manager = self.env.ref('purchase.group_purchase_manager')
+        return self.env.user.id in [purchase_manager.users.id]
+
+    @api.multi
+    def button_confirm(self):
+        '''Redefined for check if the user have the right to confirm a
+        purchase.
+        '''
+        if self._ckeck_right_access():
+            return super(PurchaseOrder, self).button_confirm()
+        else:
+            raise except_orm(
+                "ACCESS ERROR",
+                _("You have NOT ACCESS to confirm a Purchase Order."))
