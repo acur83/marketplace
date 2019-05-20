@@ -52,5 +52,5 @@
 	      groups="base.group_system"
               parent="purchase.menu_procurement_management"
               action="services_catalog_action_id"
-	      sequence="99"/>    
+	      sequence="99"/>
 </odoo>
