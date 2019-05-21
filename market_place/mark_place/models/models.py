@@ -3,6 +3,7 @@
 from odoo import models, fields, api
 from openerp.osv.orm import except_orm
 from openerp.tools.translate import _
+from odoo.addons import decimal_precision as dp
 
 
 class MarketServicesCatalog(models.Model):
@@ -24,6 +25,15 @@ class ResUsers(models.Model):
 
     services_catalog_id = fields.Many2one('services.catalog')
     related_partner_id = fields.Many2one('res.partner', copy=False)
+
+
+class PurchaseRequisitionLine(models.Model):
+    ''' TODO DOCUMENT
+    '''
+    _inherit = 'purchase.requisition.line'
+
+    product_qty = fields.Float(
+        digits=dp.get_precision('Product Unit of Measure'))
 
 
 class PurchaseRequisition(models.Model):
