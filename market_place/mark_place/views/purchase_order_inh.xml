@@ -7,11 +7,12 @@
     <field name="arch" type="xml">
       <xpath expr="//tree/field[@name='amount_untaxed']"
       	     position="replace">
-	<field name="employee_evaluation" string="Evaluation"/>
+      	<field name="initial_amount" string="Initial Amount"/>
+      	<field name="employee_evaluation" string="Supplier Valuation"/>
       </xpath>
       <xpath expr="//tree/field[@name='amount_total']"
       	     position="replace">
-      	<field name="note" string="Note"/>
+      	<field name="amount_total" string="Proposition"/>
       </xpath>
     </field>
   </record>

@@ -44,6 +44,17 @@ class PurchaseRequisition(models.Model):
     services_catalogs_ids = fields.Many2many('market.services.catalog',
                                              required=True)
     requisition_code = fields.Char()
+    total_amount = fields.Float(compute='_get_total_amount', store=True)
+
+    @api.depends('line_ids')
+    def _get_total_amount(self):
+        '''Find the partner related with the login user.
+
+        '''
+        for record in self:
+            total = sum(line.product_qty * line.price_unit
+                        for line in record.line_ids)
+            record.total_amount = total
 
 
 class PurchaseOrder(models.Model):
@@ -57,17 +68,19 @@ class PurchaseOrder(models.Model):
                                           store=True)
     employee_evaluation = fields.Text(related='computed_partner_id.comment',
                                       readonly=True, store=True)
+    initial_amount = fields.Float(related='requisition_id.total_amount',
+                                  store=True)
 
     @api.onchange('order_line')
     def _compute_partner(self):
         '''Find the partner related with the login user.
 
         '''
-        for record in self:
-            if record.env.user.related_partner_id:
-                record.computed_partner_id = record.env.user.related_partner_id.id
-                record.partner_id = record.env.user.related_partner_id.id
-                record.currency_id = record.env.user.related_partner_id.currency_id
+        for pur in self:
+            if pur.env.user.related_partner_id:
+                pur.computed_partner_id = pur.env.user.related_partner_id.id
+                pur.partner_id = pur.env.user.related_partner_id.id
+                pur.currency_id = pur.env.user.related_partner_id.currency_id
 
     @api.model
     def create(self, vals):

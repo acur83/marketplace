@@ -46,6 +46,15 @@
             </group>
           </form>
         </field>
+
+	 <group class="oe_subtotal_footer oe_right">
+	   <div class="oe_subtotal_footer_separator oe_inline">
+             <label for="total_amount"/>
+           </div>
+           <field name="total_amount" nolabel="1"
+		  class="oe_subtotal_footer_separator" widget="monetary"
+		  options="{'currency_field': 'currency_id'}"/>
+	 </group>
       </xpath>
       <xpath expr="//sheet/group/group/field[@name='ordering_date']"
       	     position="attributes">
