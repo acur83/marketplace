@@ -6,6 +6,12 @@
     <field name="inherit_id"
 	   ref="purchase_requisition.view_purchase_requisition_form"/>
     <field name="arch" type="xml">
+      <xpath expr="//header/button[@name='action_open']" position="replace">
+	<button name="action_open" states="in_progress"
+		string="Validate"
+		groups="base.group_system"
+		type="object" class="btn-primary"/>
+      </xpath>
       <xpath expr="//sheet/notebook" position="inside">
 	<page string="Services Catalogs" groups="base.group_system">
 	  <group>
