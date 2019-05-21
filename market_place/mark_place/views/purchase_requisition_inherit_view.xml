@@ -8,14 +8,15 @@
     <field name="arch" type="xml">
       <xpath expr="//header/button[@name='action_open']" position="replace">
 	<button name="action_open" states="in_progress"
-		string="Validate"
+		string="Validar"
 		groups="base.group_system"
 		type="object" class="btn-primary"/>
       </xpath>
       <xpath expr="//sheet/notebook" position="inside">
-	<page string="Services Catalogs" groups="base.group_system">
+	<page string="Catálogo de Servicios" groups="base.group_system">
 	  <group>
-	    <field name="services_catalogs_ids" widget="many2many_tags"/>
+	    <field name="services_catalogs_ids" string="Servicios"
+		   widget="many2many_tags"/>
 	  </group>
 	</page>
       </xpath>
@@ -51,7 +52,7 @@
 	   <div class="oe_subtotal_footer_separator oe_inline">
              <label for="total_amount"/>
            </div>
-           <field name="total_amount" nolabel="1"
+           <field name="total_amount" nolabel="1" string="Total"
 		  class="oe_subtotal_footer_separator" widget="monetary"
 		  options="{'currency_field': 'currency_id'}"/>
 	 </group>
@@ -70,7 +71,7 @@
       </xpath>
       <xpath expr="//sheet/group/group/field[@name='origin']"
       	     position="replace">
-      	<field name="requisition_code" string="Custom Code"/>
+      	<field name="requisition_code" string="Código"/>
       </xpath>
     </field>
   </record>

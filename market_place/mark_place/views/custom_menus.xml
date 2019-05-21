@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
   <menuitem id="menu_market_place_submen"
-	    name="Services Catalog"
+	    name="Catálogo de Servicios"
 	    groups="base.group_system"
             parent="purchase.menu_procurement_management"
             action="services_catalog_action_id"

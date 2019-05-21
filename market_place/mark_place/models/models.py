@@ -11,7 +11,7 @@ class MarketServicesCatalog(models.Model):
     '''
     _name = 'market.services.catalog'
     _rec_name = 'custom_name'
-    _description = 'Services Catalog'
+    _description = 'Catálogo de Servicios'
 
     custom_name = fields.Char(required=True)
     users_ids = fields.One2many('res.users', 'services_catalog_id',
@@ -106,4 +106,5 @@ class PurchaseOrder(models.Model):
         else:
             raise except_orm(
                 "ACCESS ERROR",
-                _("You have NOT ACCESS to confirm a Purchase Order."))
+                _("Usted no tiene PERMISO para confirmar una Orden de\
+                Compra. Contacte con su Administrador."))

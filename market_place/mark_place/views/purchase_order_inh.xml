@@ -7,12 +7,12 @@
     <field name="arch" type="xml">
       <xpath expr="//tree/field[@name='amount_untaxed']"
       	     position="replace">
-      	<field name="initial_amount" string="Initial Amount"/>
-      	<field name="employee_evaluation" string="Supplier Valuation"/>
+      	<field name="initial_amount" string="Valor Inicial"/>
+      	<field name="employee_evaluation" string="Evaluación del Proveedor"/>
       </xpath>
       <xpath expr="//tree/field[@name='amount_total']"
       	     position="replace">
-      	<field name="amount_total" string="Proposition"/>
+      	<field name="amount_total" string="Propuesta"/>
       </xpath>
     </field>
   </record>
@@ -24,11 +24,11 @@
     <field name="arch" type="xml">
       <xpath expr="//sheet/group/group/field[@name='partner_id']"
       	     position="before">
-  	<field name="computed_partner_id" string="Supplier"/>
+  	<field name="computed_partner_id" string="Proveedor"/>
       </xpath>
       <xpath expr="//sheet/group/group/field[@name='computed_partner_id']"
       	     position="after">
-  	<field name="employee_evaluation" string="Services Evaluation"/>
+  	<field name="employee_evaluation" string="Evaluación de Servicio"/>
       </xpath>
       <xpath expr="//sheet/group/group/field[@name='partner_id']"
       	     position="attributes">

@@ -5,8 +5,8 @@
       <field name="model">market.services.catalog</field>
       <field name="arch" type="xml">
 	<tree string="Market Place Service Catalog">
-	  <field name="custom_name" string="Custom Name"/>
-	  <field name="users_ids" string="Users"/>
+	  <field name="custom_name" string="Nombre"/>
+	  <field name="users_ids" string="Usuario"/>
 	</tree>
       </field>
     </record>
@@ -17,12 +17,13 @@
       <field name="arch" type="xml">
     	<form>
     	  <sheet>
-    	    <separator string="Market Place Services"/>
+    	    <separator string="Servicios"/>
     	    <group col="2" colspan="2">
-	      <field name="custom_name" string="Custom Name"/>
+	      <field name="custom_name" string="Nombre"/>
     	    </group>
 	    <group col="2" colspan="2">
-	      <field name="users_ids" string="Users" widget="many2many_tags"/>
+	      <field name="users_ids" string="Usuarios"
+		     widget="many2many_tags"/>
     	    </group>
     	  </sheet>
     	</form>
@@ -30,7 +31,7 @@
     </record>
 
     <record id="services_catalog_action_id" model="ir.actions.act_window">
-      <field name="name">Services Catalog</field>
+      <field name="name">Catálogo de Servicios</field>
       <field name="type">ir.actions.act_window</field>
       <field name="res_model">market.services.catalog</field>
       <field name="view_type">form</field>
@@ -48,7 +49,7 @@
     </record>
     
     <menuitem id="menu_market_place_submen"
-	      name="Services Catalog"
+	      name="Catálogo de Servicios"
 	      groups="base.group_system"
               parent="purchase.menu_procurement_management"
               action="services_catalog_action_id"
