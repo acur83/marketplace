@@ -1,41 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-  <!-- creo que este esta de mas -->
-  <record model="ir.rule" id="market_purchase_order_user_rule">
+
+  <!-- This rule modify the original rule created in the purchase requisition -->
+  <!-- module and remove the access to the purchase user to create a new -->
+  <!-- purchase agreement. -->
+  <record id="purchase_requisition.access_purchase_requisition_stock_manager"
+  	  model="ir.model.access">
+    <field name="perm_read" eval="True"/>
+    <field name="perm_write" eval="False"/>
+    <field name="perm_create" eval="False"/>
+    <field name="perm_unlink" eval="False"/>
+  </record>
+
+  <record id="purchase_requisition.access_purchase_requisition"
+  	  model="ir.model.access">
+    <field name="perm_read" eval="True"/>
+    <field name="perm_write" eval="False"/>
+    <field name="perm_create" eval="False"/>
+    <field name="perm_unlink" eval="False"/>
+  </record>
+
+  <!-- new groups definition -->
+  <record id="group_lititator_user" model="res.groups">
+    <field name="name">Licitator User</field>
+    <field name="category_id" ref="base.module_category_purchase_management"/>
+    <field name="implied_ids" eval="[(4, ref('purchase.group_purchase_user'))]"/>
+    <field name="users" eval="[(4, ref('base.group_user'))]"/>
+  </record>
+
+  <record id="group_lititator_admin" model="res.groups">
+    <field name="name">Licitator Manager</field>
+    <field name="category_id" ref="base.module_category_purchase_management"/>
+    <field name="implied_ids" eval="[(4, ref('purchase.group_purchase_manager'))]"/>
+    <field name="users" eval="[(4, ref('base.user_root')),
+			      (4, ref('base.user_admin'))]"/>
+  </record>
+
+  <record model="ir.rule" id="purchase_order_user_licitator_rule">
     <field name="name">Market_Place: see only own purchase order</field>
     <field name="model_id" ref="purchase.model_purchase_order"/>
-    <field name="groups" eval="[(4, ref('base.group_user'))]"/>
+    <field name="groups" eval="[(4, ref('group_lititator_user'))]"/>
     <field name="domain_force">
     [('create_uid', '=', user.id)]</field>
   </record>
 
-  <record model="ir.rule" id="market_place_all_rule">
+  <record model="ir.rule" id="purchase_order_admin_licitator_rule">
     <field name="name">Market_Place: see all Purchases</field>
     <field name="model_id" ref="purchase.model_purchase_order"/>
-    <field name="groups" eval="[(4, ref('base.group_system'))]"/>
+    <field name="groups" eval="[(4, ref('group_lititator_admin'))]"/>
     <field name="domain_force">[(1, '=', 1)]</field>
   </record>
 
-  <record model="ir.rule" id="market_purchase_requisition_rule_1">
-    <field name="name">Market_Place: </field>
-    <field name="model_id" ref="model_purchase_requisition"/>
-    <field name="groups" eval="[(4, ref('base.group_system'))]"/>
-    <field name="domain_force">
-      [
-      ('state', 'in', ['draft','ongoing','in_progress','open','done',
-      'cancel'])
-      ]
-    </field>
-  </record>
+  <!-- <record model="ir.rule" id="market_purchase_requisition_rule_1"> -->
+  <!--   <field name="name">Market_Place: </field> -->
+  <!--   <field name="model_id" ref="model_purchase_requisition"/> -->
+  <!--   <field name="groups" eval="[(4, ref('base.group_system'))]"/> -->
+  <!--   <field name="domain_force"> -->
+  <!--     [ -->
+  <!--     ('state', 'in', ['draft','ongoing','in_progress','open','done', -->
+  <!--     'cancel']) -->
+  <!--     ] -->
+  <!--   </field> -->
+  <!-- </record> -->
 
-  <record model="ir.rule" id="market_purchase_requisition_rule2">
-    <field name="name">Market_Place: see own Licitation</field>
-    <field name="model_id" ref="model_purchase_requisition"/>
-    <field name="groups" eval="[(4, ref('purchase.group_purchase_user'))]"/>
-    <field name="domain_force">
-      ['&amp;',
-      ('state', 'in', ['in_progress']),
-      ('services_catalogs_ids.users_ids', 'in', [user.id])]
-    </field>
-  </record>
+  <!-- <record model="ir.rule" id="market_purchase_requisition_rule2"> -->
+  <!--   <field name="name">Market_Place: see own Licitation</field> -->
+  <!--   <field name="model_id" ref="model_purchase_requisition"/> -->
+  <!--   <field name="groups" eval="[(4, ref('purchase.group_purchase_user'))]"/> -->
+  <!--   <field name="domain_force"> -->
+  <!--     ['&amp;', -->
+  <!--     ('state', 'in', ['in_progress']), -->
+  <!--     ('services_catalogs_ids.users_ids', 'in', [user.id])] -->
+  <!--   </field> -->
+  <!-- </record> -->
 </odoo>

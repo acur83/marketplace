@@ -13,7 +13,8 @@
 		type="object" class="btn-primary"/>
       </xpath>
       <xpath expr="//sheet/notebook" position="inside">
-	<page string="Catálogo de Servicios" groups="base.group_system">
+	<page string="Catálogo de Servicios"
+	      groups="base.group_system, mark_place.group_lititator_admin">
 	  <group>
 	    <field name="services_catalogs_ids" string="Servicios"
 		   widget="many2many_tags"/>
@@ -78,47 +79,47 @@
 
   <!-- this view set readonly True attribute to some needed field for
        system user group -->
-  <record id="view_purchase_requisition_inherit_test" model="ir.ui.view">
-    <field name="name">purchase.requisition_inherit.form.view</field>
-    <field name="model">purchase.requisition</field>
-    <field name="inherit_id"
-	   ref="purchase_requisition.view_purchase_requisition_form"/>
-    <field name="groups_id" eval="[(6, 0, [ref('purchase.group_purchase_user')])]"/>
-    <field name="arch" type="xml">
-      <xpath expr="//sheet/notebook/page/field[@name='line_ids']/tree/field[@name='product_qty']" position="attributes">
-	<attribute name="readonly">True</attribute>
-      </xpath>
-      <xpath expr="//sheet/notebook/page/field[@name='line_ids']/tree/field[@name='product_id']" position="attributes">
-	<attribute name="readonly">True</attribute>
-      </xpath>
-      <xpath expr="//sheet/notebook/page/field[@name='line_ids']/tree/field[@name='price_unit']" position="attributes">
-	<attribute name="readonly">True</attribute>
-      </xpath>
+  <!-- <record id="view_purchase_requisition_inherit_test" model="ir.ui.view"> -->
+  <!--   <field name="name">purchase.requisition_inherit.form.view</field> -->
+  <!--   <field name="model">purchase.requisition</field> -->
+  <!--   <field name="inherit_id" -->
+  <!-- 	   ref="purchase_requisition.view_purchase_requisition_form"/> -->
+  <!--   <field name="groups_id" eval="[(6, 0, [ref('purchase.group_purchase_user')])]"/> -->
+  <!--   <field name="arch" type="xml"> -->
+  <!--     <xpath expr="//sheet/notebook/page/field[@name='line_ids']/tree/field[@name='product_qty']" position="attributes"> -->
+  <!-- 	<attribute name="readonly">True</attribute> -->
+  <!--     </xpath> -->
+  <!--     <xpath expr="//sheet/notebook/page/field[@name='line_ids']/tree/field[@name='product_id']" position="attributes"> -->
+  <!-- 	<attribute name="readonly">True</attribute> -->
+  <!--     </xpath> -->
+  <!--     <xpath expr="//sheet/notebook/page/field[@name='line_ids']/tree/field[@name='price_unit']" position="attributes"> -->
+  <!-- 	<attribute name="readonly">True</attribute> -->
+  <!--     </xpath> -->
 
-    </field>
-  </record>
+  <!--   </field> -->
+  <!-- </record> -->
 
   <!-- this view set readonly False attribute to some needed field for system
        user group -->
-  <record id="view_purchase_requisition_inherit_test1" model="ir.ui.view">
-    <field name="name">purchase.requisition_inherit.form.view</field>
-    <field name="model">purchase.requisition</field>
-    <field name="inherit_id"
-	   ref="purchase_requisition.view_purchase_requisition_form"/>
-    <field name="groups_id"
-	   eval="[(6, 0, [ref('purchase.group_purchase_manager')])]"/>
-    <field name="arch" type="xml">
-      <xpath expr="//sheet/notebook/page/field[@name='line_ids']/tree/field[@name='product_id']" position="attributes">
-	<attribute name="readonly">False</attribute>
-      </xpath>
-      <xpath expr="//sheet/notebook/page/field[@name='line_ids']/tree/field[@name='product_qty']" position="attributes">
-	<attribute name="readonly">False</attribute>
-      </xpath>
-      <xpath expr="//sheet/notebook/page/field[@name='line_ids']/tree/field[@name='price_unit']" position="attributes">
-	<attribute name="readonly">False</attribute>
-      </xpath>
+  <!-- <record id="view_purchase_requisition_inherit_test1" model="ir.ui.view"> -->
+  <!--   <field name="name">purchase.requisition_inherit.form.view</field> -->
+  <!--   <field name="model">purchase.requisition</field> -->
+  <!--   <field name="inherit_id" -->
+  <!-- 	   ref="purchase_requisition.view_purchase_requisition_form"/> -->
+  <!--   <field name="groups_id" -->
+  <!-- 	   eval="[(6, 0, [ref('purchase.group_purchase_manager')])]"/> -->
+  <!--   <field name="arch" type="xml"> -->
+  <!--     <xpath expr="//sheet/notebook/page/field[@name='line_ids']/tree/field[@name='product_id']" position="attributes"> -->
+  <!-- 	<attribute name="readonly">False</attribute> -->
+  <!--     </xpath> -->
+  <!--     <xpath expr="//sheet/notebook/page/field[@name='line_ids']/tree/field[@name='product_qty']" position="attributes"> -->
+  <!-- 	<attribute name="readonly">False</attribute> -->
+  <!--     </xpath> -->
+  <!--     <xpath expr="//sheet/notebook/page/field[@name='line_ids']/tree/field[@name='price_unit']" position="attributes"> -->
+  <!-- 	<attribute name="readonly">False</attribute> -->
+  <!--     </xpath> -->
 
-    </field>
-  </record>
+  <!--   </field> -->
+  <!-- </record> -->
 </odoo>
 

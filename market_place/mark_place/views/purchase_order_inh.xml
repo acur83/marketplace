@@ -38,10 +38,14 @@
       	     position="attributes">
         <attribute name="attrs">{'invisible': True}</attribute>
       </xpath>
+      <xpath expr="//sheet/group/group/field[@name='origin']"
+      	     position="attributes">
+        <attribute name="attrs">{'invisible': True}</attribute>
+      </xpath>
     </field>
   </record>
 
-  <record id="view_market_purchase_requisition_form_inh" model="ir.ui.view">
+  <record id="view_market_purchase_order_form_inh" model="ir.ui.view">
     <field name="name">market_p.purchase.req.inh.form.view</field>
     <field name="model">purchase.order</field>
     <field name="inherit_id"

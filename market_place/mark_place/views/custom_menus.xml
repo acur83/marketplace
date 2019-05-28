@@ -2,7 +2,7 @@
 <odoo>
   <menuitem id="menu_market_place_submen"
 	    name="Catálogo de Servicios"
-	    groups="base.group_system"
+	    groups="base.group_system,mark_place.group_lititator_admin"
             parent="purchase.menu_procurement_management"
             action="services_catalog_action_id"
 	    sequence="99"/>
