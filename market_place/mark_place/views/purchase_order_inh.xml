@@ -38,6 +38,10 @@
       	     position="attributes">
         <attribute name="attrs">{'invisible': True}</attribute>
       </xpath>
+      <xpath expr="//sheet/group/group/field[@name='origin']"
+      	     position="attributes">
+        <attribute name="attrs">{'invisible': True}</attribute>
+      </xpath>
     </field>
   </record>
 

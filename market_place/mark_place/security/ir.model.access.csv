@@ -1,3 +1,7 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_market_place_manager,market.place.manager,model_market_services_catalog,base.group_system,1,1,1,1
+access_licitator_manager,licitator.manager,model_market_services_catalog,group_market_place_lititator_admin,1,1,1,1
 access_market_place_user,market.place.user,model_market_services_catalog,base.group_user,1,0,0,0
+access_purchase_requisition_user,purchase.requisition.user,model_purchase_requisition,group_market_place_lititator_user,1,0,0,0
+access_purchase_requisition_admin,purchase.requisition.admin,model_purchase_requisition,mark_place.group_market_place_lititator_admin,1,1,1,1
+access_user_licitator_manager,user_licitator.manager,model_res_users,group_market_place_lititator_admin,1,1,1,0

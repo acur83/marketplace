@@ -24,7 +24,8 @@ class ResUsers(models.Model):
     _inherit = 'res.users'
 
     services_catalog_id = fields.Many2one('services.catalog')
-    related_partner_id = fields.Many2one('res.partner', copy=False)
+    related_partner_id = fields.Many2one('res.partner', copy=False,
+                                         required=True)
 
 
 class PurchaseRequisitionLine(models.Model):
