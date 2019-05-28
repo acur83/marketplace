@@ -6,16 +6,15 @@ from openerp.tools.translate import _
 from odoo.addons import decimal_precision as dp
 
 
-class MarketServicesCatalog(models.Model):
+class ExternalServices(models.Model):
     '''TODO DOCUMENT
     '''
-    _name = 'market.services.catalog'
-    _rec_name = 'custom_name'
+    _name = 'external.services'
+    _rec_name = 'service_name'
     _description = 'Catálogo de Servicios'
 
-    custom_name = fields.Char(required=True)
-    users_ids = fields.One2many('res.users', 'services_catalog_id',
-                                required=True)
+    service_name = fields.Char(required=True)
+    users_ids = fields.Many2many('res.users', required=True)
 
 
 class ResUsers(models.Model):
@@ -23,8 +22,8 @@ class ResUsers(models.Model):
     '''
     _inherit = 'res.users'
 
-    services_catalog_id = fields.Many2one('services.catalog')
-    related_partner_id = fields.Many2one('res.partner', copy=False)
+    related_partner_id = fields.Many2one('res.partner', copy=False,
+                                         required=True)
 
 
 class PurchaseRequisitionLine(models.Model):
@@ -41,7 +40,7 @@ class PurchaseRequisition(models.Model):
     '''
     _inherit = 'purchase.requisition'
 
-    services_catalogs_ids = fields.Many2many('market.services.catalog',
+    external_services_ids = fields.Many2many('external.services',
                                              required=True)
     requisition_code = fields.Char()
     total_amount = fields.Float(compute='_get_total_amount', store=True)
@@ -56,6 +55,26 @@ class PurchaseRequisition(models.Model):
                         for line in record.line_ids)
             record.total_amount = total
 
+    # @api.model
+    # def create(self, vals):
+    #     ''' TODO: DOCUMENT
+    #     '''
+    #     if self.total_amount == 0:
+    #         raise except_orm("VALUE ERROR",
+    #                          _("The Total Amount could not be 0.\
+    #                          Please check your products lines values."))
+    #     return super(PurchaseRequisition,self).create(vals)
+
+
+class PurchaseOrderLine(models.Model):
+    ''' TODO DOCUMENT
+    '''
+    _inherit = 'purchase.order.line'
+
+    user_prod_qty = fields.Float(related='product_qty',
+                                 groups="mark_place.group_lititator_user,\
+                                 mark_place.group_lititator_admin",
+                                 readonly=True, store=True)
 
 class PurchaseOrder(models.Model):
     ''' TODO DOCUMENT
@@ -94,7 +113,7 @@ class PurchaseOrder(models.Model):
         purchase.
         '''
         purchase_manager = self.env.ref('purchase.group_purchase_manager')
-        return self.env.user.id in [purchase_manager.users.id]
+        return self.env.user.id in [u.id for u in purchase_manager.users]
 
     @api.multi
     def button_confirm(self):

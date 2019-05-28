@@ -10,13 +10,14 @@
     """,
     'depends': ['base', 'purchase', 'purchase_requisition'],
     'data': [
-        'views/services_catalog.xml',
+        'security/security.xml',
+        'security/ir.model.access.csv',
+        'views/external_services.xml',
         'views/purchase_requisition_inherit_view.xml',
         'views/purchase_order_inh.xml',
         'views/res_users_inh_form_view.xml',
         'views/custom_menus.xml',
-        'security/ir.model.access.csv',
-        'security/security.xml'
+
     ],
     'demo': [
     ],
