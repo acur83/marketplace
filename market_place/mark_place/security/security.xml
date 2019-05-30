@@ -32,8 +32,7 @@
     <field name="name">Licitator Manager</field>
     <field name="category_id" ref="base.module_category_purchase_management"/>
     <field name="implied_ids" eval="[(4, ref('purchase.group_purchase_manager'))]"/>
-    <field name="users" eval="[(4, ref('base.user_root')),
-			      (4, ref('base.user_admin'))]"/>
+    <field name="users" eval="[(4, ref('base.group_system'))]"/>
   </record>
 
   <record model="ir.rule" id="purchase_order_user_licitator_rule">
@@ -59,7 +58,7 @@
     <field name="domain_force">
       ['&amp;',
       ('state', 'in', ['in_progress']),
-      ('services_catalogs_ids.users_ids', 'in', [user.id])]
+      ('external_services_ids.users_ids', 'in', [user.id])]
     </field>
   </record>
 </odoo>

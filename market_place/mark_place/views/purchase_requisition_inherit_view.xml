@@ -16,7 +16,7 @@
 	<page string="Catálogo de Servicios"
 	      groups="base.group_system, mark_place.group_lititator_admin">
 	  <group>
-	    <field name="services_catalogs_ids" string="Servicios"
+	    <field name="external_services_ids" string="Servicios"
 		   widget="many2many_tags"/>
 	  </group>
 	</page>

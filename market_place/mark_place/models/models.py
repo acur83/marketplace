@@ -6,14 +6,14 @@ from openerp.tools.translate import _
 from odoo.addons import decimal_precision as dp
 
 
-class MarketServicesCatalog(models.Model):
+class ExternalServices(models.Model):
     '''TODO DOCUMENT
     '''
-    _name = 'market.services.catalog'
-    _rec_name = 'custom_name'
+    _name = 'external.services'
+    _rec_name = 'service_name'
     _description = 'Catálogo de Servicios'
 
-    custom_name = fields.Char(required=True)
+    service_name = fields.Char(required=True)
     users_ids = fields.Many2many('res.users', required=True)
 
 
@@ -40,7 +40,7 @@ class PurchaseRequisition(models.Model):
     '''
     _inherit = 'purchase.requisition'
 
-    services_catalogs_ids = fields.Many2many('market.services.catalog',
+    external_services_ids = fields.Many2many('external.services',
                                              required=True)
     requisition_code = fields.Char()
     total_amount = fields.Float(compute='_get_total_amount', store=True)

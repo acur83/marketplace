@@ -1,7 +1,7 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_market_place_manager,market.place.manager,model_market_services_catalog,base.group_system,1,1,1,1
-access_licitator_manager,licitator.manager,model_market_services_catalog,group_lititator_admin,1,1,1,1
-access_market_place_user,market.place.user,model_market_services_catalog,base.group_user,1,0,0,0
+access_external_services_manager,external.services.manager,model_external_services,base.group_system,1,1,1,1
+access_external_services_licitator,external.services.licitator,model_external_services,group_lititator_admin,1,0,0,0
+access_external_services_user,external.services.user,model_external_services,group_lititator_user,1,0,0,0
 access_purchase_requisition_admin,purchase.requisition.admin,model_purchase_requisition,mark_place.group_lititator_admin,1,1,1,1
 access_user_licitator_manager,user_licitator.manager,model_res_users,group_lititator_admin,1,1,1,0
 access_po_licitator_manager,po.licitator.manager,model_purchase_order,group_lititator_admin,1,1,1,1

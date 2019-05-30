@@ -1,42 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-  <menuitem id="menu_market_place_submen"
+  <menuitem id="external_services_submen"
 	    name="Catálogo de Servicios"
-	    groups="base.group_system,mark_place.group_lititator_admin"
+	    groups="base.group_system"
             parent="purchase.menu_procurement_management"
-            action="services_catalog_action_id"
+            action="external_services_action_id"
 	    sequence="99"/>
+  
     <!-- This new group is for hide the Control Menu -->
     <record id="hide_group" model="res.groups">
             <field name="name">Hide</field>
             <field name="comment">Hide.</field>
     </record>
-    <!-- Hide the Control Menu -->
+    
     <record model="ir.ui.menu" id="purchase.menu_purchase_control">
       <field name="groups_id" eval="[(6,0,[ref('hide_group')])]"/>
     </record>
-    <!-- Hide the Control Menu -->
+    
     <record model="ir.ui.menu" id="purchase.menu_purchase_rfq">
       <field name="groups_id" eval="[(6,0,[ref('hide_group')])]"/>
     </record>
-    <!-- Hide the Products Menu -->
+    
     <record model="ir.ui.menu"
 	    id="purchase.menu_procurement_partner_contact_form">
       <field name="groups_id" eval="[(6,0,[ref('hide_group')])]"/>
     </record>
-    <!-- Hide the Vendors Menu -->
+    
     <record model="ir.ui.menu"
 	    id="purchase.menu_procurement_management_supplier_name">
       <field name="groups_id" eval="[(6,0,[ref('hide_group')])]"/>
     </record>
-    <!-- Change the menu root name -->
+    
      <record model="ir.ui.menu" id="purchase.menu_purchase_root">
         <field name='name'>Licitaciones</field>
-    </record>
-    <!-- Change the sub-menu root name -->
+     </record>
+     
      <record model="ir.ui.menu" id="purchase.menu_procurement_management">
         <field name='name'>Licitaciones</field>
-    </record>
+     </record>
+     
     <record model="ir.ui.menu" id="purchase.menu_purchase_form_action">
         <field name='name'>Propuestas</field>
     </record>

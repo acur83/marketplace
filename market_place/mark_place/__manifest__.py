@@ -12,7 +12,7 @@
     'data': [
         'security/security.xml',
         'security/ir.model.access.csv',
-        'views/services_catalog.xml',
+        'views/external_services.xml',
         'views/purchase_requisition_inherit_view.xml',
         'views/purchase_order_inh.xml',
         'views/res_users_inh_form_view.xml',
