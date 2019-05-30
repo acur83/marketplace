@@ -47,11 +47,4 @@
         </p>
             </field>
     </record>
-    
-    <menuitem id="menu_market_place_submen"
-	      name="Catálogo de Servicios"
-	      groups="base.group_system"
-              parent="purchase.menu_procurement_management"
-              action="services_catalog_action_id"
-	      sequence="99"/>
 </odoo>

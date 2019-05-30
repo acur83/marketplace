@@ -51,26 +51,15 @@
     <field name="domain_force">[(1, '=', 1)]</field>
   </record>
 
-  <!-- <record model="ir.rule" id="market_purchase_requisition_rule_1"> -->
-  <!--   <field name="name">Market_Place: </field> -->
-  <!--   <field name="model_id" ref="model_purchase_requisition"/> -->
-  <!--   <field name="groups" eval="[(4, ref('base.group_system'))]"/> -->
-  <!--   <field name="domain_force"> -->
-  <!--     [ -->
-  <!--     ('state', 'in', ['draft','ongoing','in_progress','open','done', -->
-  <!--     'cancel']) -->
-  <!--     ] -->
-  <!--   </field> -->
-  <!-- </record> -->
-
-  <!-- <record model="ir.rule" id="market_purchase_requisition_rule2"> -->
-  <!--   <field name="name">Market_Place: see own Licitation</field> -->
-  <!--   <field name="model_id" ref="model_purchase_requisition"/> -->
-  <!--   <field name="groups" eval="[(4, ref('purchase.group_purchase_user'))]"/> -->
-  <!--   <field name="domain_force"> -->
-  <!--     ['&amp;', -->
-  <!--     ('state', 'in', ['in_progress']), -->
-  <!--     ('services_catalogs_ids.users_ids', 'in', [user.id])] -->
-  <!--   </field> -->
-  <!-- </record> -->
+  <record model="ir.rule" id="purchase_requisition_user_rule">
+    <field name="name">Market_Place: see own Licitation</field>
+    <field name="model_id" ref="model_purchase_requisition"/>
+    <field name="groups"
+	   eval="[(4, ref('group_lititator_user'))]"/>
+    <field name="domain_force">
+      ['&amp;',
+      ('state', 'in', ['in_progress']),
+      ('services_catalogs_ids.users_ids', 'in', [user.id])]
+    </field>
+  </record>
 </odoo>
